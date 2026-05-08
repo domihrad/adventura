@@ -35,11 +35,9 @@ public class HerniPlan {
 
         aktualniProstor = vchod;
         Vec koste = new Vec("koste", true, 1, 0);
-        Vec lektvatZivota = new Vec("lektvar", true, 1, 2);
 
         doupe.pridejDraka(drakSmak);
         aktualniProstor.pridejVec(koste);
-        aktualniProstor.pridejVec(lektvatZivota);
     }
 
     public Prostor getAktualniProstor()

@@ -5,7 +5,7 @@ import cz.vse.adventura.uiText.TextoveRozhrani;
 
 public class Start
 {
-    void main(String[] args)
+    static void main(String[] args)
     {
         IHra hra = new Hra();
         TextoveRozhrani ui = new TextoveRozhrani(hra);

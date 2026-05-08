@@ -17,8 +17,6 @@ public class Hra implements IHra
         platnePrikazy.vlozPrikaz(new PrikazPoloz(herniPlan));
         platnePrikazy.vlozPrikaz(new PrikazVypis(herniPlan));
         platnePrikazy.vlozPrikaz(new PrikazZautoc(this));
-        platnePrikazy.vlozPrikaz(new PrikazVylecit(herniPlan));
-        platnePrikazy.vlozPrikaz(new PrikazRestart(this));
     }
 
     public String vratUvitani()
@@ -65,12 +63,6 @@ public class Hra implements IHra
             textKVypsani="Nevím co tím myslíš? Tento příkaz neznám. ";
         }
         return textKVypsani;
-    }
-
-    public void restartujHru()
-    {
-        this.herniPlan = new HerniPlan();
-        this.konecHry = false;
     }
 
     public void setKonecHry(boolean konecHry)

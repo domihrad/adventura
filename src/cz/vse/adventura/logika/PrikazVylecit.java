@@ -1,34 +1,51 @@
 package cz.vse.adventura.logika;
 
-public class PrikazVylecit implements IPrikaz
-{
+public class PrikazVylecit implements IPrikaz {
 
     private static final String NAZEV = "vyléčit";
     private HerniPlan plan;
+
+    public PrikazVylecit(HerniPlan plan)
+    {
+        this.plan = plan;
+    }
 
     @Override
     public String provedPrikaz(String... parametry)
     {
         if (parametry.length == 0)
         {
-            return "Nevim s čím se mám uzdravit.";
+            return "Pro výléčení je třeba lektvar.";
         }
 
         String nazevVeci = parametry[0];
+        Batoh batoh = plan.getBatoh();
+        Hrdina hrdina = plan.getHrdina();
 
-        try
+        if (!batoh.jeVecVBatohu(nazevVeci))
         {
-
-            plan.SeberVec(nazevVeci);
-
-            return "Věc " + nazevVeci + " byla sebrána";
-        }
-        catch (Exception e)
-        {
-            return "Vec neslo použít " + e.getMessage();
+            return "Věc '" + nazevVeci + "' nemáš u sebe.";
         }
 
+        if (nazevVeci.equals("lektvar"))
+        {
+            try
+            {
+                Vec lektvarLeceni = batoh.getVec(nazevVeci);
+                batoh.odeberVec(nazevVeci);
+                hrdina.setZivoty(hrdina.getZivoty() + lektvarLeceni.getPridaniZivotu());
 
+                return "Máš teď: " + hrdina.getZivoty();
+            }
+            catch (Exception e)
+            {
+                return "Věc nešlo použít k vyléčení: " + e.getMessage();
+            }
+        }
+        else
+        {
+            return "Věc '" + nazevVeci + " ti nepomohla.";
+        }
     }
 
     @Override
