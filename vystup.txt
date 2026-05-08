@@ -1,0 +1,17 @@
+Vítejte!
+Toto je příběh o Červené Karkulce, babičce a vlkovi.
+Napište 'nápověda', pokud si nevíte rady, jak hrát dál.
+
+Jsi v mistnosti/prostoru domeček, ve kterém bydlí Karkulka.
+východy: les
+> jdi les
+Jsi v mistnosti/prostoru les s jahodami, malinami a pramenem vody.
+východy: domeček hluboký_les
+> seber košte
+Vec neslo sebrat Cannot invoke "java.util.Map.get(Object)" because "this.veci" is null
+> jdi les
+Tam se odsud jít nedá!
+> jdi domeček
+Jsi v mistnosti/prostoru domeček, ve kterém bydlí Karkulka.
+východy: les
+Dík, že jste si zahráli.  Ahoj.
