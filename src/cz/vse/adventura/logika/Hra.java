@@ -5,6 +5,7 @@ public class Hra implements IHra
     private SeznamPrikazu platnePrikazy;
     private HerniPlan herniPlan;
     private boolean konecHry = false;
+    private StavHry stavHry = StavHry.PROBIHA;
 
     public Hra()
     {
@@ -41,7 +42,7 @@ public class Hra implements IHra
 
     public boolean konecHry()
     {
-        return konecHry;
+        return stavHry == StavHry.UKONCENA;
     }
 
     public String zpracujPrikaz(String radek)
@@ -70,12 +71,20 @@ public class Hra implements IHra
     public void restartujHru()
     {
         this.herniPlan = new HerniPlan();
-        this.konecHry = false;
+        this.stavHry = StavHry.PROBIHA;
     }
 
     public void setKonecHry(boolean konecHry)
     {
-        this.konecHry = konecHry;
+        if (konecHry)
+        {
+            this.stavHry = StavHry.UKONCENA;
+        }
+        else
+        {
+
+            this.stavHry = StavHry.PROBIHA;
+        }
     }
 
     public HerniPlan getHerniPlan()

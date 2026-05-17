@@ -20,4 +20,9 @@ public class Postava
     {
         return silaUtoku;
     }
+
+    public void setSilaUtoku(int silaUtoku)
+    {
+        this.silaUtoku = silaUtoku;
+    }
 }

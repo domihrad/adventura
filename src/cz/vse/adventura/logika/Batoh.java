@@ -1,6 +1,7 @@
 package cz.vse.adventura.logika;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Batoh
@@ -8,6 +9,23 @@ public class Batoh
     private int maximalniKapacita = 2;
     private int maximalniNosnost = 3;
     private Map<String, Vec> veci = new HashMap<>();
+    private static Batoh instance;
+    /* Domácí úkol - singleton
+
+     */
+    public static Batoh instance()
+    {
+        if(instance == null)
+        {
+            instance = new Batoh();
+        }
+        return instance;
+    }
+
+    public void smazVeciVBatohu()
+    {
+        veci.clear();
+    }
 
     public boolean jeVecVBatohu(String nazev)
     {
@@ -69,8 +87,13 @@ public class Batoh
         String seznam = "V batohu máš:";
         for (String nazev : veci.keySet())
         {
-            seznam += " " + nazev;
+            seznam +=  nazev + " ";
         }
         return seznam;
+    }
+
+    public Map<String, Vec> getVeciVBatohu()
+    {
+        return veci;
     }
 }

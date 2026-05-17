@@ -1,5 +1,7 @@
 package cz.vse.adventura.logika;
+/* Domácí úkol
 
+ */
 public class Hrdina extends Postava
 {
     private int zivoty;
