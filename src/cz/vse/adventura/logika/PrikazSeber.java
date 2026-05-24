@@ -22,13 +22,18 @@ public class PrikazSeber implements IPrikaz
 
         try
         {
+            if(nazevVeci.equals("zlato"))
+            {
+                System.out.println("Vyhrál si gratuluji!!");
+                System.exit(0);
 
+            }
             plan.SeberVec(nazevVeci);
             return "Věc " + nazevVeci + " byla sebrána";
         }
         catch (Exception e)
         {
-            return "Vec neslo sebrat " + e.getMessage();
+            return "Vec nešlo sebrat " + e.getMessage();
         }
 
 

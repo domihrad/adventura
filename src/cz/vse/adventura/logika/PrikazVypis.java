@@ -31,6 +31,7 @@ public class PrikazVypis implements IPrikaz
             return plan.getBatoh().getObsah();
         }
 
+
         return coVypisat + "' neznám. Můžeš vypsat 'batoh' nebo 'prostor'.";
     }
 

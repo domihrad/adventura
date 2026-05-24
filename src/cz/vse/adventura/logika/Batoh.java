@@ -1,18 +1,15 @@
 package cz.vse.adventura.logika;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Batoh
 {
-    private int maximalniKapacita = 2;
-    private int maximalniNosnost = 3;
+    private int maximalniKapacita = 3;
+    private int maximalniNosnost = 5;
     private Map<String, Vec> veci = new HashMap<>();
     private static Batoh instance;
-    /* Domácí úkol - singleton
 
-     */
     public static Batoh instance()
     {
         if(instance == null)

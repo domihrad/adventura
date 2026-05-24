@@ -15,7 +15,7 @@ public class PrikazVylecit implements IPrikaz {
     {
         if (parametry.length == 0)
         {
-            return "Pro výléčení je třeba lektvar.";
+            return "Pro výléčení je třeba napsat co využít.";
         }
 
         String nazevVeci = parametry[0];

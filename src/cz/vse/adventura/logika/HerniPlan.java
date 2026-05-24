@@ -6,7 +6,7 @@ public class HerniPlan {
 
     private Prostor aktualniProstor;
     private Batoh batoh;
-    private Drak drakSmak;
+    public Drak drakSmak;
     private Hrdina hrdina;
     private int zakladniSilaUtoku = 2;
 
@@ -22,7 +22,7 @@ public class HerniPlan {
     {
         Prostor vchod = new Prostor("vchod", "Hlavní vchod do hradu.");
         Prostor zbrojnice = new Prostor("zbrojnice", "Toto je místo se zbraněmi");
-        Prostor zalar = new Prostor("žalár", "Místnost kde lidi byli zavřeni.");
+        Prostor zalar = new Prostor("vezení", "Místnost kde lidi byli zavřeni.");
         Prostor vez = new Prostor("věž", "Místnost se schody do věže.");
         Prostor jidelna = new Prostor("jídelna", "Místnost s jídlem.");
         Prostor kaple = new Prostor("kaple", "Křesťanská mistnost.");
@@ -32,20 +32,62 @@ public class HerniPlan {
         Prostor doupe = new Prostor("doupě", "Místnost s drakem.");
         Prostor poklad = new Prostor("poklad", "Zde je poklad.");
 
-        vchod.setVychod(zbrojnice);
-        zbrojnice.setVychod(doupe);
-        doupe.setVychod(zbrojnice);
+        vchod.setVychod(jidelna);
+        vchod.setVychod(zalar);
+        zalar.setVychod(vchod);
+        jidelna.setVychod(vchod);
+
+        jidelna.setVychod(zbrojnice);
+        jidelna.setVychod(kaple);
+        zbrojnice.setVychod(jidelna);
+        kaple.setVychod(jidelna);
+
+        kaple.setVychod(loze);
+        loze.setVychod(kaple);
+
+        zbrojnice.setVychod(vez);
+        vez.setVychod(zbrojnice);
+
+        vez.setVychod(trun);
+        trun.setVychod(vez);
+
+        trun.setVychod(doupe);
+        doupe.setVychod(trun);
+        doupe.setVychod(poklad);
 
 
-        drakSmak = new Drak("Šmak", 5, 2);
+
+
+        drakSmak = new Drak("Šmak", 15, 2);
 
         aktualniProstor = vchod;
-        Vec lektvatZivota = FactoryVeci.vytvorVec("vec", "lektvar", true, 1, 2);
-        Vec koste = FactoryVeci.vytvorVec("zbran", "koště", true, 1, 3);
+        Vec lektvatZivota1 = FactoryVeci.vytvorVec("vec", "lektvar", true, 1, 2);
+        Vec lektvatZivota2 = FactoryVeci.vytvorVec("vec", "lektvar", true, 1, 2);
+        Vec lektvatZivota3 = FactoryVeci.vytvorVec("vec", "lektvar", true, 1, 2);
+
+        Vec koste = FactoryVeci.vytvorVec("zbran", "koště", true, 2, 3);
+        Vec mec = FactoryVeci.vytvorVec("zbran", "meč", true, 2, 4);
+        Vec vidlicka = FactoryVeci.vytvorVec("zbran", "vidlička", true, 1, 3);
+
+        Vec zlato = FactoryVeci.vytvorVec("vec", "zlato", true, 0, 0);
+
+        Vec papir = FactoryVeci.vytvorVec("vec", "papir", true, 1, 0);
+        Vec dalekohled = FactoryVeci.vytvorVec("vec", "dalekohled", true, 1, 0);
+        Vec skrin = FactoryVeci.vytvorVec("vec", "skřín", false, 10, 0);
+        Vec stul = FactoryVeci.vytvorVec("vec", "stůl", false, 10, 0);
 
         doupe.pridejDraka(drakSmak);
-        aktualniProstor.pridejVec(koste);
-        aktualniProstor.pridejVec(lektvatZivota);
+        zalar.pridejVec(koste);
+        jidelna.pridejVec(vidlicka);
+        jidelna.pridejVec(lektvatZivota2);
+        loze.pridejVec(skrin);
+        vez.pridejVec(dalekohled);
+        jidelna.pridejVec(stul);
+        kaple.pridejVec(papir);
+        kaple.pridejVec(lektvatZivota3);
+        zbrojnice.pridejVec(mec);
+        zalar.pridejVec(lektvatZivota1);
+        poklad.pridejVec(zlato);
     }
 
     public Prostor getAktualniProstor()
@@ -114,6 +156,7 @@ public class HerniPlan {
                 if(zvolenaZbran.getDmg() > hrdina.getSilaUtoku())
                 {
                     hrdina.setSilaUtoku(zvolenaZbran.getDmg());
+                    nejsilnejsiVec = zvolenaZbran;
                 }
             }
         }

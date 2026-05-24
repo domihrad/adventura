@@ -28,8 +28,18 @@ public class PrikazJdi implements IPrikaz
         }
         else
         {
+            if(sousedniProstor.getNazev().equals("poklad"))
+            {
+                Drak drak = plan.getDrakSmak();
+                if(drak != null && drak.getZivoty() > 0)
+                {
+                    return "Cestu ti blokuje Šmak! Musíš zabít draka, abys mohl jít dál k pokladu.";
+                }
+            }
+
             plan.setAktualniProstor(sousedniProstor);
             return sousedniProstor.dlouhyPopis();
+
         }
     }
     @Override

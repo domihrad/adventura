@@ -1,7 +1,4 @@
 package cz.vse.adventura.logika;
-/* Domácí úkol
-
- */
 public class Drak extends Postava
 {
     private boolean jeZivy;

@@ -41,16 +41,6 @@ class SeznamPrikazu {
         }
         return seznam;
     }
-
-    public String vypisVsechnyPrikazy()
-    {
-        String seznam = "";
-        for (String slovoPrikazu : mapaSPrikazy.keySet())
-        {
-            seznam += slovoPrikazu + " ";
-        }
-        return seznam;
-    }
     
 }
 

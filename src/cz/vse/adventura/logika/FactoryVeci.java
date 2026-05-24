@@ -1,9 +1,5 @@
 package cz.vse.adventura.logika;
 
-
-/* Domácí úkol - Factory
-
- */
 public class FactoryVeci
 {
 
